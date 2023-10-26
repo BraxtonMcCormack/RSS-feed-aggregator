@@ -20,6 +20,7 @@ from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
 from rss_feed.views import *
 
 urlpatterns = [
+    path('', home, name='home'),
     path('articles/<int:article_id>/toggle_read/', toggle_read_status, name='toggle-read-status'),
     path('feeds/', FeedListCreate.as_view(), name = 'feed-list-create'),
     path('categories/', CategoryListCreate.as_view(), name='category-list-create'),

@@ -7,6 +7,7 @@ from rest_framework.views import APIView
 from .serializers import UserSerializer, FeedSerializer, CategorySerializer, ArticleSerializer
 from .models import BlacklistedToken, Feed, Category, Article
 from rest_framework.decorators import api_view
+from django.http import HttpResponse
 
 
 # Create your views here.
@@ -64,3 +65,6 @@ def toggle_read_status(request, article_id):
     article.save()
 
     return Response(status = 200)
+
+def home(request):
+    return HttpResponse("Welcome to MyRSS! Navigate to the specific endpoints to use the API.")
