@@ -17,9 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-from RSS-feed-aggregator.backend.rss_feed.views import MyTokenObtainPairView, SignupView
+from rss_feed.views import *
 
 urlpatterns = [
+    path('articles/<int:article_id>/toggle_read/', toggle_read_status, name='toggle-read-status'),
+    path('feeds/', FeedListCreate.as_view(), name = 'feed-list-create'),
+    path('categories/', CategoryListCreate.as_view(), name='category-list-create'),
+    path('categories/<int:pk>/', CategoryDetail.as_view(), name='category-detail'),
+    path('articles/', ArticleListCreate.as_view(), name='article-list-create'),
+    path('articles/<int:pk>/', ArticleDetail.as_view(), name='article-detail'),
+    path('logout/', LogoutView.as_view(), name='logout'),
     path('signup/', SignupView.as_view(), name = 'signup'),
     path('api/token/', MyTokenObtainPairView.as_view(), name = 'token_obtain_pair'),
     path('api/token/', TokenObtainPairView.as_view(), name = 'token_obtain_pair'),

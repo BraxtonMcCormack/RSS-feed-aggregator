@@ -124,7 +124,7 @@ STATIC_URL = 'static/'
 # REST Framework configuration
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework_simplejwt.authentication.JWTAuthentication',
+        'rss_feed.custom_auth.CustomJWTAuthentication',  # replace rss_feed with your app name
     ),
 }
 

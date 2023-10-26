@@ -2,6 +2,7 @@
 
 from django.contrib.auth.models import User
 from rest_framework import serializers
+from .models import Feed, Category, Article
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -16,3 +17,18 @@ class UserSerializer(serializers.ModelSerializer):
             password = validated_data['password']
         )
         return user
+    
+class FeedSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Feed
+        fields = '__all__'
+
+class CategorySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Category
+        fields = '__all__'
+
+class ArticleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Article
+        fields = '__all__'
